@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Institut für Fortgeschrittene Mathematik</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --danger: #ef4444;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        header {
+            background-color: #020617;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        .proof-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #334155;
+        }
+        /* Mobile Hover Disabled for touch devices */
+        @media (hover: hover) {
+            .proof-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            }
+        }
+        .proof-title {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .math-block {
+            background-color: #0b1120;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-size: 1.15rem;
+            border-left: 3px solid var(--accent);
+            /* Ermöglicht Scrollen auf dem Handy bei zu langen Formeln */
+            white-space: nowrap; 
+        }
+        .math-block p {
+            margin: 0.5rem 0;
+        }
+        .btn {
+            background-color: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: block;
+            margin: 2rem 0 0 0;
+            width: 100%;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .btn:hover, .btn:active {
+            background-color: var(--accent);
+            color: #020617;
+        }
+        .catch {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background-color: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--danger);
+            border-radius: 6px;
+            color: #fca5a5;
+            font-size: 1.05rem;
+        }
+        .catch.show {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+            margin-top: 4rem;
+        }
+
+        /* --- MOBILE OPTIMIERUNG --- */
+        @media (max-width: 600px) {
+            header {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .subtitle {
+                font-size: 0.95rem;
+            }
+            .container {
+                margin: 2rem auto;
+            }
+            .intro {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            .proof-card {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            .proof-title {
+                font-size: 1.3rem;
+            }
+            .math-block {
+                padding: 1rem;
+                font-size: 1.05rem;
+            }
+            .btn {
+                padding: 0.9rem;
+                font-size: 0.95rem;
+            }
+            .catch {
+                font-size: 0.95rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Institut für Angewandte Mathematik</h1>
+    <div class="subtitle">Wegweisende Beweise, die die Grundlagen der Logik neu definieren.</div>
+</header>
+
+<div class="container">
+    
+    <div class="intro">
+        Willkommen im Portal für fortgeschrittene mathematische Theoreme. Die folgenden Beweise wurden von führenden (Hobby-)Mathematikern entwickelt und revolutionieren unser Verständnis von Arithmetik und Algebra.
+    </div>
+
+    <!-- Beweis 1 -->
+    <div class="proof-card">
+        <h2 class="proof-title">Theorem 1: Die Äquivalenz von 1 und 2</h2>
+        <p>In diesem fundamentalen Beweis zeigen wir, dass die Zahlen 1 und 2 mathematisch identisch sind. Wir beginnen mit zwei gleichen, von null verschiedenen Variablen.</p>
+        <div class="math-block">
+            <p>Sei \( a = b \)</p>
+            <p>Multipliziere beide Seiten mit \( a \):</p>
+            <p>\( a^2 = ab \)</p>
+            <p>Subtrahiere \( b^2 \) auf beiden Seiten:</p>
+            <p>\( a^2 - b^2 = ab - b^2 \)</p>
+            <p>Faktorisiere beide Seiten:</p>
+            <p>\( (a - b)(a + b) = b(a - b) \)</p>
+            <p>Dividiere durch \( (a - b) \):</p>
+            <p>\( a + b = b \)</p>
+            <p>Da \( a = b \), ersetzen wir \( a \) durch \( b \):</p>
+            <p>\( b + b = b \)</p>
+            <p>\( 2b = b \)</p>
+            <p>Teile durch \( b \):</p>
+            <p><strong>\( 2 = 1 \) \(\blacksquare\)</strong></p>
+        </div>
+        <button class="btn" onclick="toggleCatch('catch1', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <div id="catch1" class="catch">
+            <strong>Der kleine Haken:</strong> Im Schritt "Dividiere durch \( (a - b) \)" wird durch Null geteilt! Da zu Beginn festgelegt wurde, dass \( a = b \), ist \( a - b = 0 \). Die Division durch Null ist verboten und macht den Rest des Beweises ungültig.
+        </div>
+    </div>
+
+    <!-- Beweis 2 -->
+    <div class="proof-card">
+        <h2 class="proof-title">Theorem 2: Die Identität von 4 und 5</h2>
+        <p>Ein eleganter Beweis durch algebraische Umformung, der die vermeintliche Distanz zwischen benachbarten ganzen Zahlen aufhebt.</p>
+        <div class="math-block">
+            <p>Wir beginnen mit der wahren Aussage:</p>
+            <p>\( -20 = -20 \)</p>
+            <p>Schreiben wir die Zahlen anders:</p>
+            <p>\( 16 - 36 = 25 - 45 \)</p>
+            <p>Addiere auf beiden Seiten \( \frac{81}{4} \):</p>
+            <p>\( 16 - 36 + \frac{81}{4} = 25 - 45 + \frac{81}{4} \)</p>
+            <p>Dies entspricht perfekten Quadraten (2. Binomische Formel):</p>
+            <p>\( \left(4 - \frac{9}{2}\right)^2 = \left(5 - \frac{9}{2}\right)^2 \)</p>
+            <p>Ziehe die Wurzel auf beiden Seiten:</p>
+            <p>\( 4 - \frac{9}{2} = 5 - \frac{9}{2} \)</p>
+            <p>Addiere \( \frac{9}{2} \) auf beiden Seiten:</p>
+            <p><strong>\( 4 = 5 \) \(\blacksquare\)</strong></p>
+        </div>
+        <button class="btn" onclick="toggleCatch('catch2', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <div id="catch2" class="catch">
+            <strong>Der kleine Haken:</strong> Beim Ziehen der Wurzel aus einem Quadrat gilt \( \sqrt{x^2} = |x| \) (der Betrag).<br><br> \( \left|4 - 4.5\right| = |-0.5| = 0.5 \) <br> \( \left|5 - 4.5\right| = |0.5| = 0.5 \). <br><br> Dass \( (-0.5)^2 = (0.5)^2 \), bedeutet nicht, dass \( -0.5 = 0.5 \). Das Vorzeichen wurde beim simplen "Wurzelziehen" einfach ignoriert!
+        </div>
+    </div>
+
+    <!-- Beweis 3 (NEU) -->
+    <div class="proof-card">
+        <h2 class="proof-title">Theorem 3: Die Gleichheit von 1 und -1</h2>
+        <p>Ein tiefer Einblick in die komplexen Zahlen offenbart, dass die Vorzeichen von elementaren Zahlen reine Konvention sind.</p>
+        <div class="math-block">
+            <p>Wir wissen, dass \( 1 = \sqrt{1} \)</p>
+            <p>Wir schreiben 1 als Produkt zweier negativer Zahlen:</p>
+            <p>\( 1 = \sqrt{(-1) \cdot (-1)} \)</p>
+            <p>Nach den Wurzelgesetzen (\( \sqrt{a \cdot b} = \sqrt{a} \cdot \sqrt{b} \)):</p>
+            <p>\( 1 = \sqrt{-1} \cdot \sqrt{-1} \)</p>
+            <p>Die imaginäre Einheit ist \( i = \sqrt{-1} \):</p>
+            <p>\( 1 = i \cdot i \)</p>
+            <p>Da \( i^2 = -1 \), folgt direkt:</p>
+            <p><strong>\( 1 = -1 \) \(\blacksquare\)</strong></p>
+        </div>
+        <button class="btn" onclick="toggleCatch('catch3', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <div id="catch3" class="catch">
+            <strong>Der kleine Haken:</strong> Das Wurzelgesetz \( \sqrt{a \cdot b} = \sqrt{a} \cdot \sqrt{b} \) gilt im reellen Bereich nur, wenn mindestens eine der beiden Zahlen \( a \) oder \( b \) <strong>nicht negativ</strong> ist. Für zwei negative Zahlen ist diese Regel unzulässig und führt zu exakt solchen Widersprüchen!
+        </div>
+    </div>
+
+    <!-- Beweis 4 (NEU) -->
+    <div class="proof-card">
+        <h2 class="proof-title">Theorem 4: Der Beweis, dass 0 gleich 1 ist</h2>
+        <p>Mit der fortgeschrittenen Integralrechnung beweisen wir, dass das Nichts (0) und die Eins (1) denselben Wert haben.</p>
+        <div class="math-block">
+            <p>Betrachte das Integral: \( \int \frac{1}{x} \,dx \)</p>
+            <p>Nutze partielle Integration: \( \int u \,dv = u \cdot v - \int v \,du \)</p>
+            <p>Wähle \( u = \frac{1}{x} \) und \( dv = 1 \,dx \)</p>
+            <p>Daraus folgt: \( du = -\frac{1}{x^2} \,dx \) und \( v = x \)</p>
+            <p>Setze in die Formel ein:</p>
+            <p>\( \int \frac{1}{x} \,dx = \left( \frac{1}{x} \cdot x \right) - \int x \cdot \left( -\frac{1}{x^2} \right) \,dx \)</p>
+            <p>Vereinfachen:</p>
+            <p>\( \int \frac{1}{x} \,dx = 1 - \int \left( -\frac{1}{x} \right) \,dx \)</p>
+            <p>Minuszeichen nach außen ziehen:</p>
+            <p>\( \int \frac{1}{x} \,dx = 1 + \int \frac{1}{x} \,dx \)</p>
+            <p>Subtrahiere das Integral \( \int \frac{1}{x} \,dx \) auf beiden Seiten:</p>
+            <p><strong>\( 0 = 1 \) \(\blacksquare\)</strong></p>
+        </div>
+        <button class="btn" onclick="toggleCatch('catch4', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <div id="catch4" class="catch">
+            <strong>Der kleine Haken:</strong> Bei unbestimmten Integralen darf die Integrationskonstante \( + C \) nicht ignoriert werden. Ein unbestimmtes Integral beschreibt eine <em>Familie</em> von Funktionen. Der korrekte Schritt am Ende wäre \( F(x) + C_1 = 1 + F(x) + C_2 \), was sich schlicht zu \( C_1 = 1 + C_2 \) auflöst. Es ist kein Widerspruch, nur verschiedene Konstanten!
+        </div>
+    </div>
+
+    <!-- Beweis 5 (NEU) -->
+    <div class="proof-card">
+        <h2 class="proof-title">Theorem 5: Die Ableitungs-Illusion (2 = 1)</h2>
+        <p>Ein Beweis aus der Differentialrechnung, der selbst einfache Variablenmultiplikationen in Frage stellt.</p>
+        <div class="math-block">
+            <p>\( x^2 \) ist \( x \) mal \( x \), also \( x \) addiert mit sich selbst, \( x \)-mal:</p>
+            <p>\( x^2 = x + x + x + \dots + x \quad (\text{genau } x\text{-mal}) \)</p>
+            <p>Wir leiten beide Seiten nach \( x \) ab:</p>
+            <p>\( \frac{d}{dx} (x^2) = \frac{d}{dx} (x + x + x + \dots + x) \)</p>
+            <p>Die Ableitung von \( x^2 \) ist \( 2x \). Rechts ist die Ableitung jedes \( x \) genau 1:</p>
+            <p>\( 2x = 1 + 1 + 1 + \dots + 1 \quad (\text{genau } x\text{-mal}) \)</p>
+            <p>Die rechte Seite (\( x \)-mal die 1 addiert) ergibt wieder \( x \):</p>
+            <p>\( 2x = x \)</p>
+            <p>Wir teilen beide Seiten durch \( x \) (für \( x \neq 0 \)):</p>
+            <p><strong>\( 2 = 1 \) \(\blacksquare\)</strong></p>
+        </div>
+        <button class="btn" onclick="toggleCatch('catch5', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <div id="catch5" class="catch">
+            <strong>Der kleine Haken:</strong> Der Ausdruck "\(x\) aufaddiert, \(x\)-mal" ergibt nur Sinn, wenn \(x\) eine ganze Zahl (diskret) ist. Eine diskrete Anzahl von Termen kann man nicht einfach wie eine stetige reelle Funktion ableiten. Zudem hängt die *Anzahl* der Terme selbst von \(x\) ab, was bei der Ableitung (Kettenregel/Produktregel) völlig ignoriert wurde!
+        </div>
+    </div>
+    
+    <!-- Beweis 6 -->
+    <div class="proof-card">
+        <h2 class="proof-title">Theorem 6: Unendliche Summen = -1/12</h2>
+        <p>Die analytische Fortsetzung beweist, dass die Summe aller natürlichen Zahlen negativ und ein Bruch ist.</p>
+        <div class="math-block">
+            <p>Sei \( S = 1 + 2 + 3 + 4 + \dots \)</p>
+            <p>Betrachte \( S_1 = 1 - 1 + 1 - 1 + \dots = \frac{1}{2} \)</p>
+            <p>Betrachte \( S_2 = 1 - 2 + 3 - 4 + \dots \)</p>
+            <p>Addiere \( S_2 \) zu sich selbst, um eins verschoben:</p>
+            <p>\( 2S_2 = 1 + (-2+1) + (3-2) + (-4+3) + \dots \)</p>
+            <p>\( 2S_2 = 1 - 1 + 1 - 1 + \dots = S_1 = \frac{1}{2} \)</p>
+            <p>Also: \( S_2 = \frac{1}{4} \)</p>
+            <p>Subtrahiere \( S_2 \) von \( S \):</p>
+            <p>\( S - S_2 = (1-1) + (2 - (-2)) + (3-3) + (4 - (-4)) + \dots \)</p>
+            <p>\( S - S_2 = 0 + 4 + 0 + 8 + 0 + 12 + \dots \)</p>
+            <p>\( S - S_2 = 4(1 + 2 + 3 + \dots) = 4S \)</p>
+            <p>\( S - \frac{1}{4} = 4S \)</p>
+            <p>\( -3S = \frac{1}{4} \)</p>
+            <p><strong>\( S = -\frac{1}{12} \) \(\blacksquare\)</strong></p>
+        </div>
+        <button class="btn" onclick="toggleCatch('catch6', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <div id="catch6" class="catch">
+            <strong>Der kleine Haken:</strong> Die Summen \( S, S_1 \) und \( S_2 \) sind divergente Reihen (sie gehen gegen Unendlich oder springen). Klassische Rechenregeln wie Umordnen, Verschieben und Subtrahieren gelten in der Mathematik aber <em>nur</em> für absolut konvergente Reihen. 
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Institut für Angewandte Paradoxien. Für humoristische Zwecke.</p>
+</footer>
+
+<script>
+    function toggleCatch(id, btn) {
+        var element = document.getElementById(id);
+        if (element.classList.contains("show")) {
+            element.classList.remove("show");
+            btn.innerText = "Peer-Review Anmerkung (Haken anzeigen)";
+        } else {
+            element.classList.add("show");
+            btn.innerText = "Haken verbergen";
+        }
+    }
+</script>
+
+</body>
+</html>
