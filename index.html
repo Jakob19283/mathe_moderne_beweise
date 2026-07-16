@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html_content = r"""<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -189,7 +189,7 @@
 <div class="container">
     
     <div class="intro">
-        Willkommen im Portal für fortgeschrittene mathematische Theoreme. Die folgenden Beweise wurden von führenden (Hobby-)Mathematikern entwickelt und revolutionieren unser Verständnis von Arithmetik und Algebra.
+        Willkommen im Portal für fortgeschrittene mathematische Theoreme. Die folgenden Beweise wurden von führenden Mathematikern entwickelt und revolutionieren unser Verständnis von Arithmetik und Algebra.
     </div>
 
     <!-- Beweis 1 -->
@@ -212,9 +212,9 @@
             <p>Teile durch \( b \):</p>
             <p><strong>\( 2 = 1 \) \(\blacksquare\)</strong></p>
         </div>
-        <button class="btn" onclick="toggleCatch('catch1', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <button class="btn" onclick="toggleCatch('catch1', this)">Peer-Review Anmerkungen anzeigen</button>
         <div id="catch1" class="catch">
-            <strong>Der kleine Haken:</strong> Im Schritt "Dividiere durch \( (a - b) \)" wird durch Null geteilt! Da zu Beginn festgelegt wurde, dass \( a = b \), ist \( a - b = 0 \). Die Division durch Null ist verboten und macht den Rest des Beweises ungültig.
+            <strong>Anmerkungen:</strong> Im Schritt "Dividiere durch \( (a - b) \)" wird durch Null geteilt! Da zu Beginn festgelegt wurde, dass \( a = b \), ist \( a - b = 0 \). Die Division durch Null ist verboten und macht den Rest des Beweises ungültig.
         </div>
     </div>
 
@@ -236,13 +236,13 @@
             <p>Addiere \( \frac{9}{2} \) auf beiden Seiten:</p>
             <p><strong>\( 4 = 5 \) \(\blacksquare\)</strong></p>
         </div>
-        <button class="btn" onclick="toggleCatch('catch2', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <button class="btn" onclick="toggleCatch('catch2', this)">Peer-Review Anmerkungen anzeigen</button>
         <div id="catch2" class="catch">
-            <strong>Der kleine Haken:</strong> Beim Ziehen der Wurzel aus einem Quadrat gilt \( \sqrt{x^2} = |x| \) (der Betrag).<br><br> \( \left|4 - 4.5\right| = |-0.5| = 0.5 \) <br> \( \left|5 - 4.5\right| = |0.5| = 0.5 \). <br><br> Dass \( (-0.5)^2 = (0.5)^2 \), bedeutet nicht, dass \( -0.5 = 0.5 \). Das Vorzeichen wurde beim simplen "Wurzelziehen" einfach ignoriert!
+            <strong>Anmerkungen:</strong> Beim Ziehen der Wurzel aus einem Quadrat gilt \( \sqrt{x^2} = |x| \) (der Betrag).<br><br> \( \left|4 - 4.5\right| = |-0.5| = 0.5 \) <br> \( \left|5 - 4.5\right| = |0.5| = 0.5 \). <br><br> Dass \( (-0.5)^2 = (0.5)^2 \), bedeutet nicht, dass \( -0.5 = 0.5 \). Das Vorzeichen wurde beim simplen "Wurzelziehen" einfach ignoriert!
         </div>
     </div>
 
-    <!-- Beweis 3 (NEU) -->
+    <!-- Beweis 3 -->
     <div class="proof-card">
         <h2 class="proof-title">Theorem 3: Die Gleichheit von 1 und -1</h2>
         <p>Ein tiefer Einblick in die komplexen Zahlen offenbart, dass die Vorzeichen von elementaren Zahlen reine Konvention sind.</p>
@@ -257,13 +257,13 @@
             <p>Da \( i^2 = -1 \), folgt direkt:</p>
             <p><strong>\( 1 = -1 \) \(\blacksquare\)</strong></p>
         </div>
-        <button class="btn" onclick="toggleCatch('catch3', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <button class="btn" onclick="toggleCatch('catch3', this)">Peer-Review Anmerkungen anzeigen</button>
         <div id="catch3" class="catch">
-            <strong>Der kleine Haken:</strong> Das Wurzelgesetz \( \sqrt{a \cdot b} = \sqrt{a} \cdot \sqrt{b} \) gilt im reellen Bereich nur, wenn mindestens eine der beiden Zahlen \( a \) oder \( b \) <strong>nicht negativ</strong> ist. Für zwei negative Zahlen ist diese Regel unzulässig und führt zu exakt solchen Widersprüchen!
+            <strong>Anmerkungen:</strong> Das Wurzelgesetz \( \sqrt{a \cdot b} = \sqrt{a} \cdot \sqrt{b} \) gilt im reellen Bereich nur, wenn mindestens eine der beiden Zahlen \( a \) oder \( b \) <strong>nicht negativ</strong> ist. Für zwei negative Zahlen ist diese Regel unzulässig und führt zu exakt solchen Widersprüchen!
         </div>
     </div>
 
-    <!-- Beweis 4 (NEU) -->
+    <!-- Beweis 4 -->
     <div class="proof-card">
         <h2 class="proof-title">Theorem 4: Der Beweis, dass 0 gleich 1 ist</h2>
         <p>Mit der fortgeschrittenen Integralrechnung beweisen wir, dass das Nichts (0) und die Eins (1) denselben Wert haben.</p>
@@ -281,13 +281,13 @@
             <p>Subtrahiere das Integral \( \int \frac{1}{x} \,dx \) auf beiden Seiten:</p>
             <p><strong>\( 0 = 1 \) \(\blacksquare\)</strong></p>
         </div>
-        <button class="btn" onclick="toggleCatch('catch4', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <button class="btn" onclick="toggleCatch('catch4', this)">Peer-Review Anmerkungen anzeigen</button>
         <div id="catch4" class="catch">
-            <strong>Der kleine Haken:</strong> Bei unbestimmten Integralen darf die Integrationskonstante \( + C \) nicht ignoriert werden. Ein unbestimmtes Integral beschreibt eine <em>Familie</em> von Funktionen. Der korrekte Schritt am Ende wäre \( F(x) + C_1 = 1 + F(x) + C_2 \), was sich schlicht zu \( C_1 = 1 + C_2 \) auflöst. Es ist kein Widerspruch, nur verschiedene Konstanten!
+            <strong>Anmerkungen:</strong> Bei unbestimmten Integralen darf die Integrationskonstante \( + C \) nicht ignoriert werden. Ein unbestimmtes Integral beschreibt eine <em>Familie</em> von Funktionen. Der korrekte Schritt am Ende wäre \( F(x) + C_1 = 1 + F(x) + C_2 \), was sich schlicht zu \( C_1 = 1 + C_2 \) auflöst. Es ist kein Widerspruch, nur verschiedene Konstanten!
         </div>
     </div>
 
-    <!-- Beweis 5 (NEU) -->
+    <!-- Beweis 5 -->
     <div class="proof-card">
         <h2 class="proof-title">Theorem 5: Die Ableitungs-Illusion (2 = 1)</h2>
         <p>Ein Beweis aus der Differentialrechnung, der selbst einfache Variablenmultiplikationen in Frage stellt.</p>
@@ -303,9 +303,9 @@
             <p>Wir teilen beide Seiten durch \( x \) (für \( x \neq 0 \)):</p>
             <p><strong>\( 2 = 1 \) \(\blacksquare\)</strong></p>
         </div>
-        <button class="btn" onclick="toggleCatch('catch5', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <button class="btn" onclick="toggleCatch('catch5', this)">Peer-Review Anmerkungen anzeigen</button>
         <div id="catch5" class="catch">
-            <strong>Der kleine Haken:</strong> Der Ausdruck "\(x\) aufaddiert, \(x\)-mal" ergibt nur Sinn, wenn \(x\) eine ganze Zahl (diskret) ist. Eine diskrete Anzahl von Termen kann man nicht einfach wie eine stetige reelle Funktion ableiten. Zudem hängt die *Anzahl* der Terme selbst von \(x\) ab, was bei der Ableitung (Kettenregel/Produktregel) völlig ignoriert wurde!
+            <strong>Anmerkungen:</strong> Der Ausdruck "\(x\) aufaddiert, \(x\)-mal" ergibt nur Sinn, wenn \(x\) eine ganze Zahl (diskret) ist. Eine diskrete Anzahl von Termen kann man nicht einfach wie eine stetige reelle Funktion ableiten. Zudem hängt die *Anzahl* der Terme selbst von \(x\) ab, was bei der Ableitung (Kettenregel/Produktregel) völlig ignoriert wurde!
         </div>
     </div>
     
@@ -329,9 +329,9 @@
             <p>\( -3S = \frac{1}{4} \)</p>
             <p><strong>\( S = -\frac{1}{12} \) \(\blacksquare\)</strong></p>
         </div>
-        <button class="btn" onclick="toggleCatch('catch6', this)">Peer-Review Anmerkung (Haken anzeigen)</button>
+        <button class="btn" onclick="toggleCatch('catch6', this)">Peer-Review Anmerkungen anzeigen</button>
         <div id="catch6" class="catch">
-            <strong>Der kleine Haken:</strong> Die Summen \( S, S_1 \) und \( S_2 \) sind divergente Reihen (sie gehen gegen Unendlich oder springen). Klassische Rechenregeln wie Umordnen, Verschieben und Subtrahieren gelten in der Mathematik aber <em>nur</em> für absolut konvergente Reihen. 
+            <strong>Anmerkungen:</strong> Die Summen \( S, S_1 \) und \( S_2 \) sind divergente Reihen (sie gehen gegen Unendlich oder springen). Klassische Rechenregeln wie Umordnen, Verschieben und Subtrahieren gelten in der Mathematik aber <em>nur</em> für absolut konvergente Reihen. 
         </div>
     </div>
 
@@ -346,13 +346,17 @@
         var element = document.getElementById(id);
         if (element.classList.contains("show")) {
             element.classList.remove("show");
-            btn.innerText = "Peer-Review Anmerkung (Haken anzeigen)";
+            btn.innerText = "Peer-Review Anmerkungen anzeigen";
         } else {
             element.classList.add("show");
-            btn.innerText = "Haken verbergen";
+            btn.innerText = "Anmerkungen verbergen";
         }
     }
 </script>
 
 </body>
 </html>
+"""
+
+with open("prank_mathe_website-v3.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
